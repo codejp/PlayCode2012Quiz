@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using(Html.BeginForm())
+{
+    <p><input type="text" name="name" value="" autofocus="autofocus" required="required" placeholder="プレイヤーの名前やハンドル名など"/></p>
+    <p><input type="submit" name="cmd" value="Play" /></p>
+}
