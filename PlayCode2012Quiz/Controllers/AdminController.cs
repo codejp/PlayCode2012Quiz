@@ -22,6 +22,14 @@ namespace PlayCode2012Quiz.Controllers
             return View(this.DB);
         }
 
+        [HttpGet]
+        public ActionResult QuestionBody()
+        {
+            var context = this.DB.Context.First();
+            var curQuestion = this.DB.Questions.Find(context.CurrentQuestionID);
+            return View(curQuestion);
+        }
+
         [HttpPost]
         public ActionResult CurrentState(int state)
         {

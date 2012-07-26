@@ -14,5 +14,5 @@
             }
         });
     };
-    setInterval(updateView, 2000);
+    setInterval(updateView, 3000);
 });

@@ -15,7 +15,11 @@
     });
 
     $("#currentQuestion").live("change", function () {
-        $.post("/Admin/CurrentQuestion", { "questionID": $(this).val() });
-        updateViewState();
+        $.post(
+            "/Admin/CurrentQuestion",
+            { "questionID": $(this).val() },
+            function () {
+                $(".question-body").load("/Admin/QuestionBody");
+            });
     });
 });

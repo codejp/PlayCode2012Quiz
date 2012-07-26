@@ -1,5 +1,6 @@
 ﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
 @using PlayCode2012Quiz.Models
+@using PlayCode2012Quiz.Helpers
 
 @{
     var q = Model.Questions.Find(Model.Context.First().CurrentQuestionID);
@@ -10,7 +11,7 @@
 
 <h3>Question</h3>
 
-<p>@q.Body</p>
+<p>@Html.Markdown(q.Body)</p>
 
 <h3>Your Choice is...</h3>
 
@@ -19,7 +20,7 @@
     <p>no choice.</p>
 }
 else{
-    <p>@choiced</p>
+    <div>@Html.Markdown(choiced)</div>
 }
 
 @if (yourAns.Status == 2)
@@ -28,4 +29,11 @@ else{
 }
 else{
     <h3 class="incorrect">Incorrect...</h3>
+}
+
+@if(string.IsNullOrEmpty(q.Comment) == false)
+{
+    <h3>Details...</h3>
+
+    <div>@Html.Markdown(q.Comment)</div>
 }

@@ -92,6 +92,15 @@ textarea {
 
 /* Player
 -----------------------------------------------------------*/
+pre
+{
+    font-family:Consolas, monospace;
+    border:solid 1px;
+    border-color:#0094ff;
+    padding:1em;
+    background-color:#f2f8fc;
+}
+
 .correct,
 .incorrect
 {

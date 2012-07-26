@@ -2,5 +2,5 @@
     var updateView = function(){
         $(".main-content").load("LatestDashboard");
     };
-    setInterval(updateView, 2000);
+    setInterval(updateView, 3000);
 });

@@ -5,7 +5,7 @@
 }
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Admin";
 
     var context = Model.Context.First();
     
@@ -43,3 +43,8 @@
 <h3>Current Question</h3>
 
 @Html.DropDownList("currentQuestion", questions)
+
+
+<div class="question-body">
+    @Html.Action("QuestionBody")
+</div>

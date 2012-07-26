@@ -1,12 +1,17 @@
 ﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
+
 @using PlayCode2012Quiz.Models
+@using PlayCode2012Quiz.Helpers
 
 @{
     var q = Model.Questions.Find(Model.Context.First().CurrentQuestionID);
+    var markdown = new MarkdownSharp.Markdown();
 }
 <h3>Question</h3>
 
-<p>@q.Body</p>
+<div>
+    @Html.Markdown(q.Body)
+</div>
 
 <h3>Choice Answer.</h3>
 
@@ -15,7 +20,7 @@
     <div class="options">
         <input type="radio" name="option" value="@opt.index" id="@("option" + opt.index.ToString())" />
         <label for="@("option" + opt.index.ToString())">
-            @opt.text
+            @Html.Markdown(opt.text)
         </label>
     </div>
 }
