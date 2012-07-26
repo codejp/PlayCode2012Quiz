@@ -1,30 +1,16 @@
-﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
+﻿@using PlayCode2012Quiz.Models
+@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
 
 @{
     ViewBag.Title = "Dashboard";
 }
+@section scripts{
+    <script type="text/javascript" src="~/Views/Player/Dashboard.js"></script>    
+}
+
 
 <h2>Dashboard</h2>
 
-<table>
-    <tr>
-        <th>name</th>
-        @foreach(var n in Enumerable.Range(1, Model.Questions.Count()))
-        {
-            <th>@("Q" + n.ToString())</th>
-        }
-    </tr>
-
-    @foreach (var player in Model.Players.ToArray())
-    {
-        <tr>
-            <td>@player.Name</td>
-            @foreach(var n in Enumerable.Range(1, Model.Questions.Count()))
-            {
-                <td>@("Q" + n.ToString())</td>
-            }
-        </tr>
-    }
-
-</table>
-
+<div class="main-content">
+    @Html.Partial("DashboardMainContent", Model)
+</div>

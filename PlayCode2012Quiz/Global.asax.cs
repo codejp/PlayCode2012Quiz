@@ -31,6 +31,13 @@ namespace PlayCode2012Quiz
                 if (db.Context.Any() == false)
                 {
                     db.Context.Add(new Context { CurrentQuestionID = 1, CurrentState = 0 });
+                    
+                    db.Players.Add(new Player { Name = "jsakamoto" });
+                    db.Players.Add(new Player { Name = "zecl" });
+
+                    db.Questions.Add(new Question { Body = "Q-1", Option0 = "A-1-1", Option1 = "A-1-2", Option3 = "A-1-3", IndexOfCorrectOption = 0 });
+                    db.Questions.Add(new Question { Body = "Q-2", Option0 = "A-2-1", Option1 = "A-2-2", Option3 = "A-2-3", IndexOfCorrectOption = 1 });
+                    
                     db.SaveChanges();
                 }
             }

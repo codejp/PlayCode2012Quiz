@@ -59,3 +59,33 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+/* 
+-----------------------------------------------------------*/
+
+.answer-status
+{
+    display:block;
+    width:2em;
+    height:2em;
+    zoom:1;
+    background-color:#ddd;
+}
+
+/* entried, and wainting. */
+.answer-status-1
+{
+    background-color:#ffd800;
+}
+
+/* correct. */
+.answer-status-2
+{
+    background-color:#20ca20;
+}
+
+/* incorect. */
+.answer-status-3
+{
+    background-color:#ff6a00;
+}

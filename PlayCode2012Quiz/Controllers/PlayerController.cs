@@ -29,5 +29,11 @@ namespace PlayCode2012Quiz.Controllers
         {
             return View(this.DB);
         }
+
+        [HttpGet]
+        public ActionResult LatestDashboard()
+        {
+            return PartialView("DashboardMainContent", this.DB);
+        }
     }
 }

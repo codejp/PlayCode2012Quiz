@@ -1,0 +1,27 @@
+﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
+@using PlayCode2012Quiz.Models
+
+
+<table>
+    <tr>
+        <th>name</th>
+        @foreach(var n in Enumerable.Range(1, Model.Questions.Count()))
+        {
+            <th>@("Q" + n.ToString())</th>
+        }
+    </tr>
+
+    @foreach (var player in Model.Players.ToArray())
+    {
+        <tr>
+            <td>@player.Name</td>
+            @foreach(var q in Model.Questions.ToList())
+            {
+                var ans = Model.Answers.FirstOrDefault(a => a.PlayerID == player.PlayerID && a.QuestionID == q.QuestionID) ?? new Answer();
+                <td><span class="answer-status answer-status-@ans.Status">&nbsp;</span></td>
+            }
+        </tr>
+    }
+
+</table>
+
