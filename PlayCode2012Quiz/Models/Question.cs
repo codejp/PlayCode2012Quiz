@@ -18,6 +18,18 @@ namespace PlayCode2012Quiz.Models
         public string Option4 { get; set; }
         public string Option5 { get; set; }
 
+        public string[] GetOptions()
+        {
+            return new[] { 
+                Option0,
+                Option1,
+                Option2,
+                Option3,
+                Option4,
+                Option5
+            }.Where(s => string.IsNullOrEmpty(s) == false).ToArray();
+        }
+
         public int IndexOfCorrectOption { get; set; }
 
         public string Comment { get; set; }

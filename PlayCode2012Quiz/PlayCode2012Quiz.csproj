@@ -204,6 +204,7 @@
     <Content Include="Scripts\knockout-2.0.0.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Player\Player.js" />
     <Content Include="Views\Player\Dashboard.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -220,6 +221,10 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Player\Dashboard.cshtml" />
     <Content Include="Views\Player\DashboardMainContent.cshtml" />
+    <Content Include="Views\Player\PlayerMainContent0.cshtml" />
+    <Content Include="Views\Player\PlayerMainContent1.cshtml" />
+    <Content Include="Views\Player\PlayerMainContent2.cshtml" />
+    <Content Include="Views\Player\PlayerMainContent3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

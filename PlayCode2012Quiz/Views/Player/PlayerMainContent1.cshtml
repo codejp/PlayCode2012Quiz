@@ -1,0 +1,21 @@
+﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
+@using PlayCode2012Quiz.Models
+
+@{
+    var q = Model.Questions.Find(Model.Context.First().CurrentQuestionID);
+}
+<h3>Question</h3>
+
+<p>@q.Body</p>
+
+<h3>Choice Answer.</h3>
+
+@foreach (var opt in q.GetOptions().Select((o, i) => new { text = o, index = i }))
+{
+    <div class="options">
+        <input type="radio" name="option" value="@opt.index" id="@("option" + opt.index.ToString())" />
+        <label for="@("option" + opt.index.ToString())">
+            @opt.text
+        </label>
+    </div>
+}

@@ -1,7 +1,21 @@
-﻿@{
+﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
+@using PlayCode2012Quiz.Models
+
+@{
     ViewBag.Title = "Index";
 }
+@section scripts{
+    <script type="text/javascript" src="~/Views/Player/Player.js"></script>
+}
+
+<form>
+    <input type="hidden" name="currentstate" id="currentstate" value="@Model.Context.First().CurrentState" />
+</form>
 
 <h2>Index</h2>
 
 <p>@(User.Identity.Name)</p>
+
+<div class="main-content">
+    @Html.Action("PlayerMainContent")
+</div>

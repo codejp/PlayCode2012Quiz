@@ -1,0 +1,31 @@
+﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
+@using PlayCode2012Quiz.Models
+
+@{
+    var q = Model.Questions.Find(Model.Context.First().CurrentQuestionID);
+    var playerID = Model.Players.First(p => p.Name == User.Identity.Name).PlayerID;
+    var yourAns = Model.Answers.First(a => a.PlayerID == playerID && a.QuestionID == q.QuestionID);
+    var choiced = yourAns.ChoincedOptionIndex >= 0 ? q.GetOptions()[yourAns.ChoincedOptionIndex] : null;
+}
+
+<h3>Question</h3>
+
+<p>@q.Body</p>
+
+<h3>Your Choice is...</h3>
+
+@if (choiced == null)
+{
+    <p>no choice.</p>
+}
+else{
+    <p>@choiced</p>
+}
+
+@if (yourAns.Status == 2)
+{
+    <h3 class="correct">Correct!</h3>
+}
+else{
+    <h3 class="incorrect">Incorrect...</h3>
+}
