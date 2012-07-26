@@ -1,0 +1,45 @@
+﻿@model PlayCode2012Quiz.Models.PlayCode2012QuizDB
+
+@section scripts{
+    <script type="text/javascript" src="~/Views/Admin/Admin.js"></script>
+}
+
+@{
+    ViewBag.Title = "Index";
+
+    var context = Model.Context.First();
+    
+    var states = new[] { 
+        new SelectListItem{ Value="0", Text="please wait."},
+        new SelectListItem{ Value="1", Text="choice the answer."},
+        new SelectListItem{ Value="2", Text="closed."},
+        new SelectListItem{ Value="3", Text="show correct answer."},
+    };
+    states
+        .First(s => s.Value == context.CurrentState.ToString())
+        .Selected = true;
+
+    var curQ = Model.Questions.FirstOrDefault(q => q.QuestionID == context.CurrentQuestionID);
+
+    var questions = Model
+        .Questions
+        .ToArray()
+        .Select((q, i) => new SelectListItem
+        {
+            Value = q.QuestionID.ToString(),
+            Text = "Q" + (i + 1).ToString(),
+            Selected = curQ != null ? curQ.QuestionID == q.QuestionID : false
+        })
+        .ToArray();
+}
+
+
+<h2>Admin</h2>
+
+<h3>Current State</h3>
+
+@Html.DropDownList("currentState", states)
+
+<h3>Current Question</h3>
+
+@Html.DropDownList("currentQuestion", questions)
