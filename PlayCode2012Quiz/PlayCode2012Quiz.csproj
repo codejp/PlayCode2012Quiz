@@ -48,6 +48,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="GDataDB">
+      <HintPath>..\packages\GDataDB.0.3.0.0\lib\GDataDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.AccessControl">
+      <HintPath>..\packages\Google.GData.AccessControl.1.9.0.0\lib\Google.GData.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client">
+      <HintPath>..\packages\Google.GData.Client.1.9.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Documents">
+      <HintPath>..\packages\Google.GData.Documents.1.9.0.0\lib\Google.GData.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions">
+      <HintPath>..\packages\Google.GData.Extensions.1.9.0.0\lib\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Spreadsheets">
+      <HintPath>..\packages\Google.GData.Spreadsheets.1.9.0.0\lib\Google.GData.Spreadsheets.dll</HintPath>
+    </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
@@ -147,6 +165,7 @@
     <Compile Include="Helpers\HtmlExtension.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\GDataQuestion.cs" />
     <Compile Include="Models\PlayCode2012QuizDB.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Question.cs" />
@@ -232,6 +251,7 @@
     <Content Include="Views\Player\PlayerMainContent3.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\QuestionBody.cshtml" />
+    <Content Include="Views\Admin\ImportQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -255,7 +275,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>49633</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:50457/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

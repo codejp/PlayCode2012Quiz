@@ -3,3 +3,5 @@
 /PlayCode2012Quiz/bin
 /PlayCode2012Quiz/obj
 *.suo
+/custom.appSetting.config
+/custom.appSettings.config
