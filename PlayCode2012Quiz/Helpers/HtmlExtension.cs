@@ -10,10 +10,21 @@ namespace PlayCode2012Quiz.Helpers
     {
         public static IHtmlString Markdown<T>(this HtmlHelper<T> helper, string markdownText)
         {
-            return helper.Raw(
-                new MarkdownSharp.Markdown(loadOptionsFromConfigFile: true)
-                    .Transform(markdownText)
-                );
+            if (markdownText.StartsWith("md:"))
+            {
+                return helper.Raw(
+                    new MarkdownSharp.Markdown(loadOptionsFromConfigFile: true)
+                        .Transform(markdownText)
+                    );
+            }
+            else
+            {
+                return helper.Raw(
+                    HttpUtility.HtmlEncode(markdownText)
+                        .Replace(" ", "&nbsp;")
+                        .Replace("\n", "<br/>")
+                    );
+            }
         }
     }
 }
