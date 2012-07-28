@@ -9,6 +9,7 @@
         {
             <th>@("Q" + n.ToString())</th>
         }
+        <th>Score</th>
     </tr>
 
     @foreach (var player in Model.Players.ToArray())
@@ -20,6 +21,9 @@
                 var ans = Model.Answers.FirstOrDefault(a => a.PlayerID == player.PlayerID && a.QuestionID == q.QuestionID) ?? new Answer();
                 <td><span class="answer-status answer-status-@ans.Status">&nbsp;</span></td>
             }
+            <td>
+                @Model.Answers.Count(a => a.PlayerID == player.PlayerID && a.Status == 2)
+            </td>
         </tr>
     }
 

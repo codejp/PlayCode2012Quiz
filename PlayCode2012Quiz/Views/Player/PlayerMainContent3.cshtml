@@ -7,6 +7,7 @@
     var playerID = Model.Players.First(p => p.Name == User.Identity.Name).PlayerID;
     var yourAns = Model.Answers.First(a => a.PlayerID == playerID && a.QuestionID == q.QuestionID);
     var choiced = yourAns.ChoincedOptionIndex >= 0 ? q.GetOptions()[yourAns.ChoincedOptionIndex] : null;
+    var correctOption = q.GetOptions()[q.IndexOfCorrectOption];
 }
 
 <h3>Question</h3>
@@ -29,6 +30,11 @@ else{
 }
 else{
     <h3 class="incorrect">Incorrect...</h3>
+    
+    <p>Correct is:</p>
+    <div>
+        @Html.Markdown(correctOption)
+    </div>
 }
 
 @if(string.IsNullOrEmpty(q.Comment) == false)
