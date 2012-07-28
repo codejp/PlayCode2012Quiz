@@ -80,6 +80,7 @@ namespace PlayCode2012Quiz.Controllers
         [HttpPost]
         public ActionResult ImportQuestion(FormCollection f)
         {
+            #if NORMALIAN
             var client = new WebClient { Encoding = Encoding.UTF8 };
             var jsonStr = client.DownloadString(new Uri("http://codejp2012quiz.cloudapp.net/Quiz/GetList"));
 
@@ -109,40 +110,41 @@ namespace PlayCode2012Quiz.Controllers
                 db.SaveChanges();
             }
 
+#else
+            var GDbUser = ConfigurationManager.AppSettings["GData.User"];
+            var GDbPwd = ConfigurationManager.AppSettings["GData.Password"];
 
-            //var GDbUser = ConfigurationManager.AppSettings["GData.User"];
-            //var GDbPwd = ConfigurationManager.AppSettings["GData.Password"];
+            var questions =
+                new GDataDB.DatabaseClient(GDbUser, GDbPwd)
+                .GetDatabase("CopyOfCode2012Quiz")
+                .GetTable<GDataQuestion>("Sheet1")
+                .FindAll()
+                .Select(r => r.Element)
+                .ToArray();
 
-            //var questions = 
-            //    new GDataDB.DatabaseClient(GDbUser, GDbPwd)
-            //    .GetDatabase("CopyOfCode2012Quiz")
-            //    .GetTable<GDataQuestion>("Sheet1")
-            //    .FindAll()
-            //    .Select(r => r.Element)
-            //    .ToArray();
+            using (var db = new PlayCode2012QuizDB())
+            {
+                db.Database.ExecuteSqlCommand("TRUNCATE TABLE Questions");
 
-            //using (var db = new PlayCode2012QuizDB())
-            //{
-            //    db.Database.ExecuteSqlCommand("TRUNCATE TABLE Questions");
+                var qs = questions
+                    .Select(q => new Question
+                    {
+                        Body = q.Body,
+                        Option0 = q.Option0,
+                        Option1 = q.Option1,
+                        Option2 = q.Option2,
+                        Option3 = q.Option3,
+                        Option4 = q.Option4,
+                        Option5 = q.Option5,
+                        Comment = q.Comment,
+                        IndexOfCorrectOption = int.Parse(Regex.Match(q.IndexOfCorrectOption, @"\d+").Value) - 1
+                    })
+                    .ToList();
+                qs.ForEach(q => db.Questions.Add(q));
 
-            //    var qs = questions
-            //        .Select(q => new Question
-            //        {
-            //            Body = q.Body,
-            //            Option0 = q.Option0,
-            //            Option1 = q.Option1,
-            //            Option2 = q.Option2,
-            //            Option3 = q.Option3,
-            //            Option4 = q.Option4,
-            //            Option5 = q.Option5,
-            //            Comment = q.Comment,
-            //            IndexOfCorrectOption = int.Parse(Regex.Match(q.IndexOfCorrectOption, @"\d+").Value) - 1
-            //        })
-            //        .ToList();
-            //        qs.ForEach(q => db.Questions.Add(q));
-
-            //    db.SaveChanges();
-            //}
+                db.SaveChanges();
+            }
+#endif
 
             return View();
         }

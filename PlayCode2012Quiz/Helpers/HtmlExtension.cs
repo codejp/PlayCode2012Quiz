@@ -14,7 +14,7 @@ namespace PlayCode2012Quiz.Helpers
             {
                 return helper.Raw(
                     new MarkdownSharp.Markdown(loadOptionsFromConfigFile: true)
-                        .Transform(markdownText)
+                        .Transform(markdownText.Substring(3))
                     );
             }
             else
