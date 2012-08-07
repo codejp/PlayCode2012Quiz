@@ -22,6 +22,12 @@ namespace PlayCode2012Quiz.Controllers
             return db.Questions;
         }
 
+        [HttpGet]
+        public int Count()
+        {
+            return db.Questions.Count();
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

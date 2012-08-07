@@ -16,8 +16,8 @@ namespace PlayCode2012Quiz
 
             routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { action = "GetQuestions", id = RouteParameter.Optional }
             );
 
             routes.MapRoute(
