@@ -33,5 +33,7 @@ namespace PlayCode2012Quiz.Models
         public int IndexOfCorrectOption { get; set; }
 
         public string Comment { get; set; }
+
+        public string Category { get; set; }
     }
 }

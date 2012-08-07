@@ -21,5 +21,7 @@ namespace PlayCode2012Quiz.Models
         public string IndexOfCorrectOption { get; set; }
 
         public string Comment { get; set; }
+
+        public string Category { get; set; }
     }
 }

@@ -137,7 +137,8 @@ namespace PlayCode2012Quiz.Controllers
                         Option4 = q.Option4,
                         Option5 = q.Option5,
                         Comment = q.Comment,
-                        IndexOfCorrectOption = int.Parse(Regex.Match(q.IndexOfCorrectOption, @"\d+").Value) - 1
+                        IndexOfCorrectOption = int.Parse(Regex.Match(q.IndexOfCorrectOption, @"\d+").Value) - 1,
+                        Category = q.Category
                     })
                     .ToList();
                 qs.ForEach(q => db.Questions.Add(q));
