@@ -32,7 +32,7 @@ namespace PlayCode2012Quiz.Controllers
         {
             var context = this.DB.Context.First();
             var curQuestion = this.DB.Questions.Find(context.CurrentQuestionID);
-            return View(curQuestion);
+            return PartialView(curQuestion);
         }
 
         [HttpPost]
