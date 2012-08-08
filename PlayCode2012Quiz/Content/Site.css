@@ -3,6 +3,7 @@
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
+    margin:1em;
 }
 
 header, footer, nav, section {
@@ -117,3 +118,19 @@ pre
 {
     background-color:#ff6a00;
 }
+
+.footer
+{
+    position:absolute;
+    width:100%;
+    background-color:#ddd;
+    height:3em;
+    line-height:3em;
+    bottom:0;
+    left:0;
+}
+    .footer a
+    {
+        display:block;
+        margin-left:1em;
+    }
